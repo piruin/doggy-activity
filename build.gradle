@@ -1,0 +1,30 @@
+group = "me.piruin"
+description = 'Doggy-Activity will notify when user leave or comeback to your activity'
+version = '0.1'
+
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.2'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    JAVA_VERSION = JavaVersion.VERSION_1_7
+
+    ANDROID_MIN_SDK = 19
+    ANDROID_TARGET_SDK = 25
+    ANDROID_BUILD_TOOLS = "25.0.0"
+    ANDROID_SUPPORT_VERSION = "25.0.0"
+
+    githubRepo = 'piruin/doggy-activity'
+}
