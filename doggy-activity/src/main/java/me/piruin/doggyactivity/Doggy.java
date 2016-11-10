@@ -1,50 +1,62 @@
+/*
+ * Copyright (c) 2016 Piruin Panichphol
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package me.piruin.doggyactivity;
 
 import android.support.annotation.NonNull;
 
-public class Doggy {
-
-  protected boolean alone = false;
-  protected boolean someoneRingTheBell = false;
-  protected boolean gotoNextRoom = false;
-  protected boolean lockingTheDoor = false;
+class Doggy {
+  boolean alone = false;
+  boolean leaveWithPlan = false;
+  boolean gotoNextRoom = false;
+  boolean lockingTheDoor = false;
   private DoggyCallback doggyCallback;
 
-  public Doggy(@NonNull DoggyCallback doggyCallback) {
+  Doggy(@NonNull DoggyCallback doggyCallback) {
     this.doggyCallback = doggyCallback;
   }
 
-  protected void refresh() {
+  void refresh() {
     gotoNextRoom = false;
-    someoneRingTheBell = false;
+    leaveWithPlan = false;
     lockingTheDoor = false;
   }
 
-  public void screenOff() {
-    alone = true;
+  void screenOff() {
     doggyCallback.onScreenOff();
+    userLeave();
   }
 
-  public void screenOn() {
+  void userLeave() {
+    alone = true;
+    boolean systemInterrupt = !leaveWithPlan;
+     /*
+      * If user leave activity by Call-in or Something that was
+      * give change to user to choose. It is systemInterrupt
+      */
+    doggyCallback.onUserLeave(systemInterrupt);
+  }
+
+  void screenOn() {
     doggyCallback.onScreenOn();
   }
 
-  public void theyBack() {
+  void theyBack() {
     doggyCallback.onUserBack();
     alone = false;
-  }
-
-  public void userLeave() {
-    alone = true;
-    boolean systemInterrupt = someoneRingTheBell;
-     /*
-      * If user leave this activity by Call in or Something that was
-      * not choice of user then call onSystemInterrupt() for more
-      * flexible
-      */
-    if (systemInterrupt)
-      doggyCallback.onSystemInterrupt();
-    doggyCallback.onUserLeave(systemInterrupt);
   }
 
   boolean isTheyLeaving() {
