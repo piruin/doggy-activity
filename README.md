@@ -1,4 +1,7 @@
-# :dog: Doggy Activity [![Build Status](https://travis-ci.org/piruin/doggy-activity.svg?branch=master)](https://travis-ci.org/piruin/doggy-activity)
+# :dog: Doggy Activity
+ [![Build Status](https://travis-ci.org/piruin/doggy-activity.svg?branch=master)](https://travis-ci.org/piruin/doggy-activity)
+ [![JCenter](https://api.bintray.com/packages/blazei/maven/DoggyActivity/images/download.svg)](https://bintray.com/blazei/maven/DoggyActivity/_latestVersion)
+ [![JitPack](https://jitpack.io/v/piruin/doggy-activity.svg)](https://jitpack.io/#piruin/doggy-activity)
 
 Doggy is watchdog for your activity, Let you know when user is leave your activity and when they back (or never come back again :cry:)
 
