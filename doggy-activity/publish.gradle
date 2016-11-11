@@ -45,7 +45,7 @@ artifacts {
 install {
   repositories.mavenInstaller {
     pom.project {
-      name 'Doggy Activity'
+      name rootProject.name
       inceptionYear 2016
       description = project.description
       url = 'https://github.com/' + project.githubRepo
@@ -82,19 +82,19 @@ bintray {
   publish = true
   pkg {
     repo = 'maven'
-    name = 'Doggy Activity'
+    name = rootProject.name
     desc = project.description
     websiteUrl = 'https://github.com/' + project.githubRepo
     issueTrackerUrl = 'https://github.com/' + project.githubRepo + '/issues'
     vcsUrl = 'https://github.com/' + project.githubRepo + '.git'
     githubRepo = project.githubRepo
-    githubReleaseNotesFile = 'CHANGELOG.md'
+    githubReleaseNotesFile = 'README.md'
     licenses = ['Apache-2.0']
     publicDownloadNumbers = true
     version {
       name = project.version
       released = new Date()
-      vcsTag = 'v' + project.version
+      vcsTag = project.version
     }
   }
 }
